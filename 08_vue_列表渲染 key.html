@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <!--
+            virtual dom會比對新舊的內容不一致才做更新
+        -->
+        <ul>
+            <li v-for="(p,index) in persons" :key="p.id">
+                {{p.name}} - {{p.age}}
+                <input type="text">
+            </li>
+        </ul>
+
+        <button @click="add">新增</button>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            persons: [
+                { id: 001, name: 'yi', age: 26 },
+                { id: 002, name: 'ta', age: 27 },
+                { id: 003, name: 'ma', age: 28 }
+            ]
+        },
+        methods: {
+            add() {
+                this.persons.unshift({ id: 004, name: 'da', age: 30 });
+            }
+        }
+    })
+</script>
+
+</html>

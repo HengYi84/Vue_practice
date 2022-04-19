@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+
+        <!--  v-show 用 display來作控制呈現，切換頻率高使用 -->
+        <div v-show="n === 1">哈囉{{n}}</div><br>
+        <div v-show="n === 2">哈囉{{n}}</div><br>
+        <div v-show="n === 3">哈囉{{n}}</div><br>
+
+        <hr>
+
+        <!--  v-if 會刪除節點 -->
+        <div v-if="n === 1">哈囉{{n}}</div><br>
+        <div v-if="n === 2">哈囉{{n}}</div><br>
+        <div v-if="n === 3">哈囉{{n}}</div><br>
+
+        <hr>
+
+        <div v-if="n === 1">哈囉{{n}}</div><br>
+        <div v-else-if="n === 2">哈囉{{n}}</div><br>
+        <div v-else="n === 3">哈囉{{n}}</div><br>
+
+        <!-- template 只能搭配 v-if，可不破壞結構 -->
+        <template v-if="n === 1">
+            <h2>台北</h2>
+            <h2>台中</h2>
+            <h2>台南</h2>
+        </template>
+
+        <button @click="n++">點我</button>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            n: 0,
+            name: "yi"
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        指令語法
+        Hello,{{name}}
+        <hr>
+        <!-- v-bind 可以簡寫成 : -->
+        <a v-bind:href="url">點擊網址</a>
+        <a :href="url">點擊網址1</a>
+
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            name: "yi",
+            url: "https://tw.yahoo.com/",
+            school: {
+
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <ul>
+            <li v-for="(p,index) in persons" :key="index">
+                {{p.name}} - {{p.age}} - {{index}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(p,index) in persons" :key="index">
+                {{p.name}} - {{p.age}} - {{index}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(v,k) in car" :key="k">
+                {{k}} - {{v}}
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            persons: [
+                { id: 001, name: 'yi', age: 26 },
+                { id: 002, name: 'ta', age: 27 },
+                { id: 003, name: 'ma', age: 28 }
+            ],
+            car: {
+                name: "audi",
+                price: 2000000
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <style>
+        .myBlu {
+            color: blue;
+            font-family: verdana;
+            font-size: 300%;
+
+        }
+
+        .myRed {
+            color: red;
+            font-family: courier;
+            font-size: 160%;
+        }
+
+        .basic {
+            background-color: lightblue;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 綁定樣式 - 適用場景，類別名稱不確定，需動態呈現 -->
+        <div class="basic" :class="color" @click="changeColor()">
+            {{'one'}}
+        </div>
+
+        <br><br>
+
+        <!-- 綁定樣式 - 適用場景，類別名稱、樣式不確定 -->
+        <div class="basic" :class="arr">
+            {{'two'}}
+        </div>
+
+        <br><br>
+
+        <!-- 綁定樣式 - 適用場景，類別名稱確定、樣式確定 -->
+        <div class="basic" :class="classObj">
+            {{'three'}}
+        </div>
+
+        <!-- 綁定Style樣式 - 適用場景，類別名稱確定、樣式確定 -->
+        <div class="basic" :style="styleObj">
+            {{'three'}}
+        </div>
+
+        <br><br>
+    </div>
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            color: "",
+            arr: ["myBlu", "myRed"],
+            classObj: {
+                myBlu: false,
+                myRed: false
+            },
+            styleObj:{
+                fontSize: "60px",
+                backgroundColor: "red"
+            }
+        },
+        methods: {
+            changeColor() {
+                const r = Math.floor(Math.random() * 3)
+                this.color = this.arr[r];
+            }
+        }
+    })
+</script>
+
+</html>

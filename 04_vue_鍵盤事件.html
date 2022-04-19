@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<!--
+    .enter
+    .tab
+    .delete (captures both “Delete” and “Backspace” keys)
+    .esc
+    .space
+    .up
+    .down
+    .left
+    .right
+-->
+
+<body>
+    <div id="root">
+        <input type="text" placeholder="請輸入" @keyup="showInfo">
+        <input type="text" placeholder="請輸入" @keyup.enter="showInfo">
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#root",
+        methods: {
+            showInfo(event) {
+                console.log(event.target.value);
+            }
+        }
+    })
+</script>
+
+</html>

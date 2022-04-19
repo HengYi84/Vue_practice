@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 20px;
+        }
+
+        .show{
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h2>歡迎來到{{name}}</h2>
+        <a href="https://www.google.com.tw/?hl=zh_TW" @click.prevent="showInfo(1234,$event)">預防跳轉</a>
+
+        <div class="show" @click="showTxt('test')">
+            <button @click.stop="showTxt('test')">test</button> <!-- @click.stop 防止事件冒泡Propagation -->
+        </div>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            name: "yi",
+        },
+        methods: {
+            showInfo(number, event) {
+                console.log(number);
+                console.log(event);
+                alert('showInfo2');
+            },
+            showTxt(text) {
+                alert(text);
+            }
+        }
+    })
+</script>
+
+</html>
