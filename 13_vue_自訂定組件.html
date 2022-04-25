@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<!--
+-->
+
+<body>
+    <div id="root">
+        <h2>當前n值:<span v-text="n"></span></h2>
+        <h2>放大10倍:<span v-big="n"></span></h2>
+        <button @click="n++">n++</button>
+
+        <input type="text" v-fbind="n">
+    </div>
+</body>
+
+<script>
+    // 全局配置
+    Vue.directive('fbind', {               
+        // 初始綁定
+        bind(element, binding) {
+            element.value = binding.value;
+        },
+        // 元素被插入頁面時
+        inserted(element, binding) {
+            element.focus();
+        },
+        // 模板重新解析
+        update(element, binding) {
+            element.value = binding.value;
+        }
+    })
+
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            n: 0
+        },
+        directives: {
+            // function調用時機
+            // 1. 初始綁定成功
+            // 2. 模板被更新
+            big(element, binding) {
+                console.log('call big');
+                element.innerText = binding.value * 10;
+            },
+            // fbind: {
+            //     // 初始綁定
+            //     bind(element, binding) {
+            //         element.value = binding.value;
+            //     },
+            //     // 元素被插入頁面時
+            //     inserted(element, binding) {
+            //         element.focus();
+            //     },
+            //     // 模板重新解析
+            //     update(element, binding) {
+            //         element.value = binding.value;
+            //     }
+            // }
+        }
+    })
+</script>
+
+</html>

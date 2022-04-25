@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<!--
+    1. 創建組件
+    2. 註冊組件
+    3. 使用組件
+-->
+
+<body>
+    <div id="root">
+        <student></student>
+        <hr>
+        <school></school>
+    </div>
+</body>
+
+<script>
+    // 創建組件
+    // const school = Vue.extend({
+    //     template:
+    //     `
+    //     <div>       
+    //         <h2>學校名稱:{{schoolName}}</h2>
+    //         <h2>學校地址:{{schoolAddress}}</h2>
+    //     </div>
+    //     `,
+    //     data() {
+    //         return { schoolName: '板新', schoolAddress: '新北市' }
+    //     }
+    // })
+
+    const school = {
+        template:
+            `
+        <div>       
+            <h2>學校名稱:{{schoolName}}</h2>
+            <h2>學校地址:{{schoolAddress}}</h2>
+        </div>
+        `,
+        data() {
+            return { schoolName: '板新', schoolAddress: '新北市' }
+        }
+    }
+
+    // 創建組件
+    const student = Vue.extend({
+        template:
+            `
+        <div>       
+            <h2>學生名稱:{{studentName}}</h2>
+            <h2>學生年紀:{{studentAge}}</h2>
+        </div>
+        `,
+        data() {
+            return { studentName: '阿明', studentAge: 20 }
+        }
+    })
+
+
+    new Vue({
+        el: "#root",
+        // 註冊
+        components: {
+            school: school,
+            student: student
+        }
+    })
+
+    // const vm = new Vue({
+    //     el: "#root",
+    //     data: {
+    //         schoolName: '板新',
+    //         schoolAddress: '新北市',
+    //         studentName: '阿明',
+    //         studentAge: 20
+    //     }
+    // })
+</script>
+
+</html>

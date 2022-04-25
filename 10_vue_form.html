@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<!--
+    1. 針對物件新增屬性，直接使用student.sex = '男'，是無法影響頁面的
+    2. 需要使用 Vue.set(vm.student,'sex','男') or vm.$set(vm.student,'sex','女')
+    3. 限制Vue.set target 需為對象，不可直接為vm上增加
+    4. 針對Array，可使用以下封裝方法，更改畫面資料
+       push()
+       pop()
+       shift()
+       unshift()
+       splice()
+       sort()
+       reverse()
+    5. 
+-->
+
+<body>
+    <div id="root">
+        <form @submit.prevent="show()">
+            帳號: <input type="text" v-model.trim="account"> <br><br>
+            密碼: <input type="password" v-model="password"> <br><br>
+            性別: <input type="number" v-model.number="age"> 男
+
+            性別: <input type="radio" name="sex" value="men" v-model="sex"> 男
+            <input type="radio" name="sex" value="female" v-model="sex"> 女<br><br>
+            興趣 <input type="checkbox" name="hobby" value="打球" v-model="hobby">打球
+            <input type="checkbox" name="hobby" value="學習" v-model="hobby">學習
+            <input type="checkbox" name="hobby" value="喝酒" v-model="hobby">喝酒 <br><br>
+            <select v-model="opt">
+                <option value="">請選擇</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+            </select>
+            <br><br>
+            <!-- v-model.lazy失焦才回傳 -->
+            <textarea v-model.lazy="other">
+            </textarea>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            account: "",
+            password: "",
+            sex: "female",
+            hobby: [],
+            opt: "",
+            other: "",
+            age: 0
+        },
+        methods: {
+            show() {
+                console.log(JSON.stringify(this._data));
+            }
+        },
+    })
+</script>
+
+</html>

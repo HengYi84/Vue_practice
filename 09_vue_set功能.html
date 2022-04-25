@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<!--
+    1. 針對物件新增屬性，直接使用student.sex = '男'，是無法影響頁面的
+    2. 需要使用 Vue.set(vm.student,'sex','男') or vm.$set(vm.student,'sex','女')
+    3. 限制Vue.set target 需為對象，不可直接為vm上增加
+    4. 針對Array，可使用以下封裝方法，更改畫面資料
+       push()
+       pop()
+       shift()
+       unshift()
+       splice()
+       sort()
+       reverse()
+    5. 
+-->
+
+<body>
+    <div id="root">
+        姓名：{{student.name}}<br>
+        年齡：{{student.age}}<br>
+        學號：{{student.no}}<br>
+        性別：{{student.sex}}<br>
+
+        <li v-for="(h,index) in hobby" :key="index">
+            <oi>{{h}}</oi>
+        </li>
+    </div>
+
+
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            student: {
+                name: "小明",
+                age: 18,
+                no: 001
+            },
+            hobby: ['運動', '聽音樂', '學習']
+        }
+    })
+</script>
+
+</html>
